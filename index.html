@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dapperdogs Booking CRM</title>
+  <style>
+    body {
+      font-family: Arial;
+      background: #0f172a;
+      color: white;
+      padding: 20px;
+    }
+    .card {
+      background: white;
+      color: black;
+      padding: 20px;
+      border-radius: 12px;
+      margin-top: 20px;
+    }
+    button {
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      background: #0f172a;
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Dapperdogs CRM (Demo)</h1>
+
+  <div class="card">
+    <h2>Create Booking</h2>
+    <input placeholder="Dog Name"><br><br>
+    <input placeholder="Owner Name"><br><br>
+    <input placeholder="Time"><br><br>
+    <button onclick="add()">Add Booking</button>
+  </div>
+
+  <div class="card">
+    <h2>Bookings</h2>
+    <div id="list"></div>
+  </div>
+
+<script>
+let bookings = [];
+
+function add() {
+  const inputs = document.querySelectorAll("input");
+  bookings.push({
+    dog: inputs[0].value,
+    owner: inputs[1].value,
+    time: inputs[2].value
+  });
+
+  render();
+}
+
+function render() {
+  document.getElementById("list").innerHTML =
+    bookings.map(b => `
+      <p>${b.time} - ${b.dog} (${b.owner})</p>
+    `).join("");
+}
+</script>
+
+</body>
+</html>
